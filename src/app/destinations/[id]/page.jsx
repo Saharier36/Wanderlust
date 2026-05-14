@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { EditModal } from "@/components/EditModal";
-import { Button, Chip, Separator } from "@heroui/react";
+import { Button, Chip, DateField, Label, Separator } from "@heroui/react";
 import {
   ArrowLeft,
   Calendar,
@@ -12,6 +12,7 @@ import {
   StarFill,
 } from "@gravity-ui/icons";
 import { DeleteAlert } from "@/components/DeleteAlert";
+import BookingCard from "@/components/BookingCard";
 
 const DestinationsDetails = async ({ params }) => {
   const { id } = await params;
@@ -36,12 +37,6 @@ const DestinationsDetails = async ({ params }) => {
     "Traditional local spa treatment",
     "Private beach dinner experience",
     "Sunrise trek to scenic viewpoint",
-  ];
-
-  const perks = [
-    "Free cancellation up to 7 days",
-    "Travel insurance included",
-    "24/7 customer support",
   ];
 
   return (
@@ -124,44 +119,7 @@ const DestinationsDetails = async ({ params }) => {
         </div>
 
         {/* Booking Card */}
-        <div className="border border-gray-100 shadow p-5 sticky top-4">
-          <p className="text-xs text-gray-400 mb-0.5">Starting from</p>
-          <p className="text-3xl font-bold text-cyan-600">${price}</p>
-          <p className="text-xs text-gray-400 mb-3">per person</p>
-
-          <Separator />
-
-          <p className="text-xs text-gray-400 mt-3 mb-1.5">Departure date</p>
-          <div className="w-full px-3 py-2 text-sm border border-gray-200 text-gray-700 mb-4 flex items-center gap-2">
-            <Calendar className="w-4 h-4 text-gray-400" />
-            {new Date(departureDate).toLocaleDateString("en-US", {
-              month: "2-digit",
-              day: "2-digit",
-              year: "numeric",
-            })}
-          </div>
-
-          <Button
-            className="w-full bg-cyan-600 text-white font-semibold rounded-none"
-            size="md"
-          >
-            Book Now <ArrowRight className="w-4 h-4" />
-          </Button>
-
-          <Separator className="my-4" />
-
-          <div className="flex flex-col gap-2.5">
-            {perks.map((perk, i) => (
-              <div
-                key={i}
-                className="flex items-center gap-2 text-xs text-gray-400"
-              >
-                <Check className="w-3.5 h-3.5 text-cyan-600 shrink-0" />
-                {perk}
-              </div>
-            ))}
-          </div>
-        </div>
+        <BookingCard destination={destination} />
       </div>
     </div>
   );
