@@ -1,8 +1,15 @@
+"use client";
+import { authClient } from "@/lib/auth-client";
+import { Avatar, Button } from "@heroui/react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
 const Navbar = () => {
+  const { data: session } = authClient.useSession();
+
+  const user = session?.user;
+
   return (
     <nav className="sticky top-0 z-40 w-full border-b border-separator bg-background/70 backdrop-blur-lg">
       <header className="flex h-16 items-center justify-between px-6">
@@ -33,12 +40,34 @@ const Navbar = () => {
           <li>
             <Link href={"/profile"}>Profile</Link>
           </li>
-          <li>
-            <Link href={"/login"}>Login</Link>
-          </li>
-          <li>
-            <Link href={"/signup"}>Sign Up</Link>
-          </li>
+          {user ? (
+            <>
+              <li>
+                <Avatar>
+                  <Avatar.Image
+                    referrerPolicy="no-referrer"
+                    alt="John Doe"
+                    src={user?.image}
+                  />
+                  <Avatar.Fallback>{user.name.charAt(0)}</Avatar.Fallback>
+                </Avatar>
+              </li>
+              <li>
+                <Button size="sm" className="rounded-none bg-[#15A1BF]">
+                  Logout
+                </Button>
+              </li>
+            </>
+          ) : (
+            <>
+              <li>
+                <Link href={"/login"}>Login</Link>
+              </li>
+              <li>
+                <Link href={"/signup"}>Sign Up</Link>
+              </li>
+            </>
+          )}
         </ul>
       </header>
     </nav>
