@@ -1,11 +1,18 @@
-import { ArrowRight, Calendar, MapPin } from "@gravity-ui/icons";
+import { ArrowUpRight, Calendar, MapPin } from "@gravity-ui/icons";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
 const DestinationCard = ({ destination }) => {
-  const { destinationName, country, category, price, departureDate, imageUrl } =
-    destination;
+  const {
+    _id,
+    destinationName,
+    country,
+    category,
+    price,
+    departureDate,
+    imageUrl,
+  } = destination;
 
   return (
     <div className="max-w-70 mt-6">
@@ -19,7 +26,7 @@ const DestinationCard = ({ destination }) => {
           unoptimized
         />
         {category && (
-          <span className="absolute top-2.5 left-2.5 bg-[#0F6E56] text-[#9FE1CB] text-xs font-medium px-2.5 py-1 rounded-full uppercase">
+          <span className="absolute top-2.5 left-2.5 bg-cyan-600 text-cyan-200 text-xs font-medium px-2.5 py-1 rounded-full uppercase">
             {category}
           </span>
         )}
@@ -45,9 +52,7 @@ const DestinationCard = ({ destination }) => {
             {departureDate}
           </div>
           <div className="text-right">
-            <span className="text-xl font-semibold text-[#0F6E56]">
-              ${price}
-            </span>
+            <span className="text-xl font-semibold">${price}</span>
             <span className="text-xs text-gray-400 font-normal">/Person</span>
           </div>
         </div>
@@ -57,11 +62,11 @@ const DestinationCard = ({ destination }) => {
 
         {/* Book Now */}
         <Link
-          href="/booking"
-          className="flex items-center gap-1.5 text-[#0F6E56] text-sm font-semibold group"
+          href={`/destinations/${_id}`}
+          className="flex items-center gap-1.5 text-cyan-600 text-sm font-semibold underline group"
         >
           BOOK NOW
-          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-150" />
+          <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-150" />
         </Link>
       </div>
     </div>

@@ -10,22 +10,38 @@ import {
   Button,
 } from "@heroui/react";
 import React from "react";
+import { useRouter } from "next/navigation";
 
 const AddDestinationPage = () => {
+  const router = useRouter();
   const onSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const destination = Object.fromEntries(formData.entries());
+
     const res = await fetch("http://localhost:5000/destinations", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(destination),
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(destination),
     });
-    const data = await res.json();
-    console.log(data);
+
+    if (res.ok) {
+      const contentType = res.headers.get("content-type");
+      let data = null;
+      if (contentType && contentType.includes("application/json")) {
+        data = await res.json();
+      }
+      console.log("Destination added successfully:", data);
+      alert("Destination added successfully!");
+      router.push("/destinations");
+    } else {
+      console.error("Failed to add destination");
+      alert("Failed to add destination. Please try again.");
+    }
   };
+
   return (
     <div className="max-w-4xl mx-auto my-10">
       <h2 className="text-2xl font-bold">Add New Travel Package</h2>
