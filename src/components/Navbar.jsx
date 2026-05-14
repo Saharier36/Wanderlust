@@ -10,6 +10,10 @@ const Navbar = () => {
 
   const user = session?.user;
 
+  const handleSignout = async () => {
+    await authClient.signOut();
+  };
+
   return (
     <nav className="sticky top-0 z-40 w-full border-b border-separator bg-background/70 backdrop-blur-lg">
       <header className="flex h-16 items-center justify-between px-6">
@@ -53,7 +57,11 @@ const Navbar = () => {
                 </Avatar>
               </li>
               <li>
-                <Button size="sm" className="rounded-none bg-[#15A1BF]">
+                <Button
+                  onClick={handleSignout}
+                  size="sm"
+                  className="rounded-none bg-[#15A1BF]"
+                >
                   Logout
                 </Button>
               </li>
