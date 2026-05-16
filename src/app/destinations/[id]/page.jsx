@@ -12,10 +12,22 @@ import {
 } from "@gravity-ui/icons";
 import { DeleteAlert } from "@/components/DeleteAlert";
 import BookingCard from "@/components/BookingCard";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
 
 const DestinationsDetails = async ({ params }) => {
   const { id } = await params;
-  const res = await fetch(`http://localhost:5000/destinations/${id}`);
+
+  const {token} = await auth.api.getToken({
+    headers: await headers()
+  })
+
+
+  const res = await fetch(`http://localhost:5000/destinations/${id}`, {
+    headers: {
+      authorization: `Bearer ${token}`
+    }
+  });
   const destination = await res.json();
 
   const { destinationName, country, imageUrl, description, duration } =
