@@ -18,13 +18,8 @@ const DestinationsDetails = async ({ params }) => {
   const res = await fetch(`http://localhost:5000/destinations/${id}`);
   const destination = await res.json();
 
-  const {
-    destinationName,
-    country,
-    imageUrl,
-    description,
-    duration,
-  } = destination;
+  const { destinationName, country, imageUrl, description, duration } =
+    destination;
 
   const nights = duration ? Number(duration) - 1 : null;
 
@@ -61,7 +56,6 @@ const DestinationsDetails = async ({ params }) => {
           alt={destinationName}
           fill
           className="object-cover"
-          unoptimized
         />
       </div>
 

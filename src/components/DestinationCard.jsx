@@ -23,7 +23,6 @@ const DestinationCard = ({ destination }) => {
           alt={destinationName}
           fill
           className="object-cover"
-          unoptimized
         />
         {category && (
           <span className="absolute top-2.5 left-2.5 bg-cyan-600 text-cyan-200 text-xs font-medium px-2.5 py-1 rounded-full uppercase">
