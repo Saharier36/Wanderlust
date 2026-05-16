@@ -51,7 +51,7 @@ const Banner = () => {
           <p className="text-xs">5-10</p>
         </div>
 
-        <div className="bg-cyan-500 py-2 px-4">
+        <div className="hidden md:block bg-cyan-500 py-2 px-4">
           <h3>Search</h3>
         </div>
       </div>
