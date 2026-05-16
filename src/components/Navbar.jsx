@@ -17,7 +17,7 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav className="sticky top-0 z-40 w-full border-b border-separator bg-background/70 backdrop-blur-lg">
+    <nav className="sticky top-0 z-40 w-full border-separator backdrop-blur-xl">
       <header className="flex h-16 items-center justify-between px-6">
         {/* Desktop nav links */}
         <ul className="hidden md:flex items-center gap-4">
@@ -151,10 +151,20 @@ const Navbar = () => {
           ) : (
             <>
               <li>
-                <Link href={"/login"}>Login</Link>
+                <Link
+                  href={"/login"}
+                  className="hover:underline hover:text-cyan-600"
+                >
+                  Login
+                </Link>
               </li>
               <li>
-                <Link href={"/signup"}>Sign Up</Link>
+                <Link
+                  href={"/signup"}
+                  className="hover:underline hover:text-cyan-600"
+                >
+                  Sign Up
+                </Link>
               </li>
             </>
           )}

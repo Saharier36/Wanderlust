@@ -140,7 +140,7 @@ const LoginPage = () => {
             Sign Up With Google
           </Button>
           <p className="text-center text-sm text-[#6b7280]">
-            Don&apos;t have an account?
+            Don&apos;t have an account?{" "}
             <Link
               href="/signup"
               className="text-[#15A1BF] font-medium hover:underline"

@@ -23,14 +23,6 @@ const DestinationsDetails = async ({ params }) => {
 
   const nights = duration ? Number(duration) - 1 : null;
 
-  const highlights = [
-    "Luxury beachfront accommodation",
-    "Visit iconic landmark at sunset",
-    "Traditional local spa treatment",
-    "Private beach dinner experience",
-    "Sunrise trek to scenic viewpoint",
-  ];
-
   return (
     <div className="max-w-4xl mx-auto px-4 pb-16">
       {/* Top Bar */}
@@ -60,7 +52,7 @@ const DestinationsDetails = async ({ params }) => {
       </div>
 
       {/* Content Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-[1fr_260px] gap-7 mt-6 items-start">
+      <div className="grid grid-cols-1 md:grid-cols-[1fr_260px] gap-50 mt-6 items-start">
         {/* Left Column */}
         <div>
           <div className="flex items-center gap-1.5 text-sm text-gray-400 mb-1.5">
@@ -91,22 +83,6 @@ const DestinationsDetails = async ({ params }) => {
           <p className="text-sm text-gray-500 leading-relaxed mb-6">
             {description}
           </p>
-
-          <h2 className="text-lg font-semibold mb-2">Highlights</h2>
-          <p className="text-sm text-gray-500 leading-relaxed mb-4">
-            {description}
-          </p>
-          <div className="grid grid-cols-2 gap-x-4 gap-y-2.5">
-            {highlights.map((item, i) => (
-              <div
-                key={i}
-                className="flex items-start gap-2 text-sm text-gray-500"
-              >
-                <Check className="w-4 h-4 text-cyan-600 mt-0.5 shrink-0" />
-                {item}
-              </div>
-            ))}
-          </div>
         </div>
 
         {/* Booking Card */}
