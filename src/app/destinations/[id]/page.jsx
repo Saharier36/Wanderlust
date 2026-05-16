@@ -2,12 +2,11 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { EditModal } from "@/components/EditModal";
-import { Button, Chip, DateField, Label, Separator } from "@heroui/react";
+import { Chip } from "@heroui/react";
 import {
   ArrowLeft,
   Calendar,
   Check,
-  ArrowRight,
   MapPin,
   StarFill,
 } from "@gravity-ui/icons";
@@ -22,8 +21,6 @@ const DestinationsDetails = async ({ params }) => {
   const {
     destinationName,
     country,
-    price,
-    departureDate,
     imageUrl,
     description,
     duration,
