@@ -11,6 +11,8 @@ import {
 } from "@heroui/react";
 import React from "react";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
+import { authClient } from "@/lib/auth-client";
 
 const AddDestinationPage = () => {
   const router = useRouter();
@@ -19,10 +21,13 @@ const AddDestinationPage = () => {
     const formData = new FormData(e.target);
     const destination = Object.fromEntries(formData.entries());
 
+    const { data: tokenData } = await authClient.token();
+
     const res = await fetch("http://localhost:5000/destinations", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        authorization: `Bearer ${tokenData?.token}`,
       },
       body: JSON.stringify(destination),
     });
@@ -33,12 +38,10 @@ const AddDestinationPage = () => {
       if (contentType && contentType.includes("application/json")) {
         data = await res.json();
       }
-      console.log("Destination added successfully:", data);
-      alert("Destination added successfully!");
+      toast.success("Destination added successfully!");
       router.push("/destinations");
     } else {
-      console.error("Failed to add destination");
-      alert("Failed to add destination. Please try again.");
+      toast.error("Failed to add destination. Please try again.");
     }
   };
 
