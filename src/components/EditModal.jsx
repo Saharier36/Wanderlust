@@ -59,7 +59,7 @@ export function EditModal({ destination }) {
       <Modal.Trigger>
         <Button variant="outline" size="sm" className="rounded-none">
           <Pencil className="w-3.5 h-3.5" />
-          Edit
+          <span className="hidden md:block">Edit</span>
         </Button>
       </Modal.Trigger>
 

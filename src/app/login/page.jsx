@@ -108,7 +108,7 @@ const LoginPage = () => {
           {/* Divider */}
           <div className="flex items-center gap-3">
             <hr className="flex-1 border-0 border-t border-gray-200" />
-            <span className="text-xs text-gray-400">Or sign up with</span>
+            <span className="text-xs text-gray-400">Or continue with</span>
             <hr className="flex-1 border-0 border-t border-gray-200" />
           </div>
 

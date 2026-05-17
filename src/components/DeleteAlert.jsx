@@ -32,7 +32,7 @@ export function DeleteAlert({ destination }) {
           className="text-danger border-danger hover:bg-red-50 rounded-none"
         >
           <TrashBin className="w-3.5 h-3.5" />
-          Delete
+          <span className="hidden md:block">Delete</span>
         </Button>
       </AlertDialog.Trigger>
 

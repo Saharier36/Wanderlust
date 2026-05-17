@@ -63,7 +63,7 @@ const DestinationsDetails = async ({ params }) => {
       </div>
 
       {/* Content Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-[1fr_260px] gap-50 mt-6 items-start">
+      <div className="grid grid-cols-1 md:grid-cols-[1fr_260px] md:gap-50 mt-6 items-start">
         {/* Left Column */}
         <div>
           <div className="flex items-center gap-1.5 text-sm text-gray-400 mb-1.5">
