@@ -1,11 +1,16 @@
+import Image from "next/image";
+
 const Footer = () => {
   return (
     <footer className="bg-black text-gray-400 px-6 md:px-16 py-16">
       <div className="max-w-7xl mx-auto">
         <div className="mb-12">
-          <h1 className="text-6xl md:text-7xl font-bold text-white">
-            Wanderlust
-          </h1>
+          <Image
+            src="/assets/Wanderlast-1.png"
+            alt="Wanderlust Logo"
+            width={400}
+            height={100}
+          />
           <p className="mt-4 max-w-xl">
             Your gateway to extraordinary travel experiences around the world.
           </p>
