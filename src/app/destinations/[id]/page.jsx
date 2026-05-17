@@ -6,7 +6,6 @@ import { Chip } from "@heroui/react";
 import {
   ArrowLeft,
   Calendar,
-  Check,
   MapPin,
   StarFill,
 } from "@gravity-ui/icons";

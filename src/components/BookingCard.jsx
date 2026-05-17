@@ -1,6 +1,6 @@
 "use client";
 import { authClient } from "@/lib/auth-client";
-import { ArrowRight, Check } from "@gravity-ui/icons";
+import { ArrowRight } from "@gravity-ui/icons";
 import { Button, DateField, Label, Separator } from "@heroui/react";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
@@ -26,10 +26,14 @@ const BookingCard = ({ destination }) => {
       departureDate: new Date(departureDate),
     };
 
+    const {data: tokenData} = await authClient.token()
+    console.log(tokenData);
+
     const res = await fetch("http://localhost:5000/booking", {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        authorization: `Bearer ${tokenData?.token}`
       },
       body: JSON.stringify(bookingData),
     });

@@ -17,7 +17,7 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav className="sticky top-0 z-40 w-full border-separator backdrop-blur-xl">
+    <nav className="sticky top-0 z-40 w-full border-separator backdrop-blur-2xl">
       <header className="flex h-16 items-center justify-between px-6">
         {/* Desktop nav links */}
         <ul className="hidden md:flex items-center gap-4">
