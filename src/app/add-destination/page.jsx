@@ -23,14 +23,17 @@ const AddDestinationPage = () => {
 
     const { data: tokenData } = await authClient.token();
 
-    const res = await fetch("http://localhost:5000/destinations", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        authorization: `Bearer ${tokenData?.token}`,
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_SERVER_URL}/destinations`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `Bearer ${tokenData?.token}`,
+        },
+        body: JSON.stringify(destination),
       },
-      body: JSON.stringify(destination),
-    });
+    );
 
     if (res.ok) {
       const contentType = res.headers.get("content-type");

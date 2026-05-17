@@ -40,14 +40,17 @@ export function EditModal({ destination }) {
 
     const { data: tokenData } = await authClient.token();
 
-    const res = await fetch(`http://localhost:5000/destinations/${_id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        authorization: `Bearer ${tokenData?.token}`,
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_SERVER_URL}/destinations/${_id}`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `Bearer ${tokenData?.token}`,
+        },
+        body: JSON.stringify(updatedDestination),
       },
-      body: JSON.stringify(updatedDestination),
-    });
+    );
 
     if (res.ok) {
       console.log("Destination updated successfully");
